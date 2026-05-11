@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metadata 实践指南</title>
+<style>
+body{margin:0;background:#f6f1e8;color:#222;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Noto Sans JP",sans-serif;line-height:1.75}
+header{background:linear-gradient(135deg,#7b2d2d,#305c5c);color:white;text-align:center;padding:48px 20px}
+main{max-width:1100px;margin:auto;padding:24px}
+section{background:#fffdf8;border:1px solid #e5dacb;border-radius:16px;padding:24px;margin:18px 0;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+h2{color:#7b2d2d;border-bottom:2px solid #e5dacb;padding-bottom:8px}
+pre{background:#f1ece3;border-radius:10px;padding:14px;overflow:auto}
+table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #e5dacb;padding:9px;text-align:left}th{background:#f1e8dc}
+.note{background:#fff6df;border-left:5px solid #d28b00;padding:12px;border-radius:8px}
+a{color:#305c5c}
+</style>
+</head>
+<body>
+<header>
+<h1>平江方言非遗 Metadata 实践指南</h1>
+<p>给刚开始或已经在做数据收集的人</p>
+</header>
+<main>
+<section>
+<h2>写在前面</h2>
+<p>这份指南来自长期田野调查、录音录像、ELAN 整理、字幕制作、数据库尝试与 AI 实验的经验。目的不是提出完美标准，而是希望大家现在就开始做 metadata。</p>
+<div class="note">不完整、不标准、不完美都没关系。先做起来，后面才能修正、扩展、公开、AI 化。</div>
+</section>
+
+<section>
+<h2>为什么 metadata 重要？</h2>
+<p>没有 metadata，录音、视频、字幕、ELAN、手抄本会互相分散；有 metadata，数据可以检索、关联、共享与长期保存，也可以被 AI 利用。</p>
+</section>
+
+<section>
+<h2>一个文件应该怎么组织？</h2>
+<pre>PG_TY_001_banzhy/
+├── PG_TY_001_banzhy.wav
+├── PG_TY_001_banzhy.srt
+├── PG_TY_001_banzhy.txt
+├── PG_TY_001_banzhy_demo.eaf
+├── PG_TY_001_banzhy_metadata.json
+└── README.md</pre>
+</section>
+
+<section>
+<h2>示范 metadata</h2>
+<pre>{
+  "identifier": "PG_TY_001",
+  "title": "斑鸠",
+  "genre": "nursery_rhyme",
+  "dialect": "平江思村芦洞方言",
+  "speaker": "Lfr",
+  "birthyear": 1954,
+  "recording_date": "2018-08-20",
+  "recording_place": "Lfr家",
+  "collector": "zsk",
+  "equipment": "Sony PJ760",
+  "ai_ready": true,
+  "time_aligned": true
+}</pre>
+</section>
+
+<section>
+<h2>TXT + SRT + EAF 为什么都要有？</h2>
+<table>
+<tr><th>文件</th><th>用途</th></tr>
+<tr><td>TXT</td><td>纯文本保存、搜索、NLP</td></tr>
+<tr><td>SRT</td><td>视频字幕、网页播放</td></tr>
+<tr><td>EAF</td><td>多层语言学标注、时间对齐、AI训练</td></tr>
+</table>
+</section>
+
+<section>
+<h2>建议现在立刻做</h2>
+<ol>
+<li>统一文件命名</li>
+<li>建立 metadata CSV / JSON</li>
+<li>统一 genre</li>
+<li>统一 speaker 信息</li>
+<li>保存地点、时间、设备、采集人</li>
+<li>尽量保留村级方言信息</li>
+</ol>
+</section>
+
+<section>
+<h2>返回</h2>
+<p><a href="../index.html">返回首页 / Back to home</a></p>
+</section>
+</main></body></html>

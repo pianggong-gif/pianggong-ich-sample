@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>平江方言非遗数据库 Metadata 规范</title>
+<style>
+body{margin:0;background:#f6f1e8;color:#222;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Noto Sans JP",sans-serif;line-height:1.75}
+header{background:linear-gradient(135deg,#7b2d2d,#305c5c);color:white;text-align:center;padding:48px 20px}
+main{max-width:1100px;margin:auto;padding:24px}
+section{background:#fffdf8;border:1px solid #e5dacb;border-radius:16px;padding:24px;margin:18px 0;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+h2{color:#7b2d2d;border-bottom:2px solid #e5dacb;padding-bottom:8px}
+table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #e5dacb;padding:9px;text-align:left;vertical-align:top}th{background:#f1e8dc}
+pre{background:#f1ece3;border-radius:10px;padding:14px;overflow:auto}
+a{color:#305c5c}
+.note{background:#fff6df;border-left:5px solid #d28b00;padding:12px;border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>平江方言非遗数据库 Metadata 规范</h1>
+<p>Pingjiang Dialect Intangible Heritage Metadata Schema / Version 2.0</p>
+</header>
+<main>
+<section>
+<h2>0. 项目定位</h2>
+<p>本规范用于整理平江方言相关非物质文化遗产资料，包括影戏、灯戏、夜歌、唱经、三花白、吟诵、快板、歌谣、童谣、方言对话、古书诵读，以及手抄本、科仪本、戏本等文献资料。</p>
+<div class="note"><strong>核心原则：</strong>多模态 + 多语言层 + AI-ready</div>
+</section>
+
+<section>
+<h2>1. 数据库结构</h2>
+<pre>Pingjiang-ICH-Corpus/
+├── metadata/
+├── audio/
+├── video/
+├── eaf/
+├── subtitle/
+├── transcription/
+├── translation/
+├── documents/
+├── images/
+├── speaker/
+└── README/</pre>
+</section>
+
+<section>
+<h2>2. Genre 类型规范</h2>
+<table>
+<tr><th>genre</th><th>中文</th><th>English</th><th>日本語</th></tr>
+<tr><td>shadow_puppetry</td><td>影戏</td><td>Shadow Puppetry</td><td>影絵芝居</td></tr>
+<tr><td>lantern_opera</td><td>灯戏</td><td>Lantern Opera</td><td>灯戯</td></tr>
+<tr><td>night_song</td><td>夜歌</td><td>Night Song</td><td>夜歌</td></tr>
+<tr><td>ritual_chant</td><td>唱经</td><td>Ritual Chant</td><td>唱経</td></tr>
+<tr><td>sanhuabai</td><td>三花白</td><td>Sanhuabai</td><td>三花白</td></tr>
+<tr><td>recitation</td><td>吟诵</td><td>Recitation</td><td>吟誦</td></tr>
+<tr><td>kuaiban</td><td>快板</td><td>Kuaiban</td><td>快板</td></tr>
+<tr><td>folk_song</td><td>歌谣</td><td>Folk Song</td><td>歌謡</td></tr>
+<tr><td>nursery_rhyme</td><td>童谣</td><td>Nursery Rhyme</td><td>童謡</td></tr>
+<tr><td>conversation</td><td>方言对话</td><td>Conversation</td><td>方言会話</td></tr>
+<tr><td>classical_text_reading</td><td>古书诵读</td><td>Classical Text Reading</td><td>古書吟誦</td></tr>
+<tr><td>daoist_ritual</td><td>道教仪式</td><td>Daoist Ritual</td><td>道教儀礼</td></tr>
+<tr><td>buddhist_ritual</td><td>佛教仪式</td><td>Buddhist Ritual</td><td>仏教儀礼</td></tr>
+<tr><td>funeral_ritual</td><td>丧礼</td><td>Funeral Ritual</td><td>葬礼儀礼</td></tr>
+<tr><td>wangmu_ritual</td><td>王母教仪式</td><td>Wangmu Ritual</td><td>王母教儀礼</td></tr>
+</table>
+</section>
+
+<section>
+<h2>3. 文件命名规范</h2>
+<pre>PG_[GenreCode]_[Number]_[Title]</pre>
+<p>例：<code>PG_TY_001_banzhy</code></p>
+<table>
+<tr><th>Code</th><th>类型</th></tr>
+<tr><td>TY</td><td>童谣</td></tr><tr><td>PY</td><td>影戏</td></tr><tr><td>DX</td><td>灯戏</td></tr><tr><td>CJ</td><td>唱经</td></tr><tr><td>FH</td><td>方言会话</td></tr><tr><td>DJ</td><td>道教</td></tr><tr><td>SL</td><td>丧礼</td></tr>
+</table>
+</section>
+
+<section>
+<h2>4. Metadata 核心字段</h2>
+<table>
+<tr><th>Field</th><th>中文</th><th>English</th><th>日本語</th></tr>
+<tr><td>identifier</td><td>唯一ID</td><td>Unique Identifier</td><td>識別ID</td></tr>
+<tr><td>title</td><td>标题</td><td>Title</td><td>タイトル</td></tr>
+<tr><td>genre</td><td>类型</td><td>Genre</td><td>ジャンル</td></tr>
+<tr><td>language</td><td>语言</td><td>Language</td><td>言語</td></tr>
+<tr><td>dialect</td><td>方言</td><td>Dialect</td><td>方言</td></tr>
+<tr><td>recording_place</td><td>采录地点</td><td>Recording Place</td><td>収録地点</td></tr>
+<tr><td>recording_date</td><td>采录日期</td><td>Recording Date</td><td>収録日</td></tr>
+<tr><td>collector</td><td>采录者</td><td>Collector</td><td>採録者</td></tr>
+<tr><td>speaker</td><td>说话人</td><td>Speaker</td><td>話者</td></tr>
+<tr><td>duration</td><td>时长</td><td>Duration</td><td>長さ</td></tr>
+<tr><td>annotation_status</td><td>标注状态</td><td>Annotation Status</td><td>注釈状態</td></tr>
+</table>
+</section>
+
+<section>
+<h2>5. Language Layer 语言层</h2>
+<table>
+<tr><th>language_layer</th><th>内容</th></tr>
+<tr><td>colloquial_dialect</td><td>方言口语</td></tr>
+<tr><td>literary_speech</td><td>文言对白</td></tr>
+<tr><td>sung_lyrics</td><td>唱词</td></tr>
+<tr><td>ritual_language</td><td>仪式语言</td></tr>
+<tr><td>scripture_language</td><td>经文语言</td></tr>
+<tr><td>recited_text</td><td>吟诵文本</td></tr>
+</table>
+</section>
+
+<section>
+<h2>6. AI-ready 字段</h2>
+<table>
+<tr><th>Field</th><th>说明</th></tr>
+<tr><td>ai_ready</td><td>是否AI可利用</td></tr>
+<tr><td>asr_usable</td><td>是否适合语音识别</td></tr>
+<tr><td>speaker_overlap</td><td>是否多人重叠</td></tr>
+<tr><td>rhythm_pattern</td><td>是否有节奏</td></tr>
+<tr><td>rhyme_pattern</td><td>是否押韵</td></tr>
+<tr><td>time_aligned</td><td>是否有时间对齐</td></tr>
+</table>
+</section>
+
+<section>
+<h2>7. ELAN Tier 推荐结构</h2>
+<table>
+<tr><th>Tier</th><th>内容</th></tr>
+<tr><td>TX</td><td>汉字</td></tr>
+<tr><td>PGPY</td><td>平江拼音</td></tr>
+<tr><td>PGMP</td><td>IPA</td></tr>
+<tr><td>GE_translation</td><td>英语翻译</td></tr>
+<tr><td>translation_ja</td><td>日语翻译</td></tr>
+<tr><td>rhyme</td><td>押韵</td></tr>
+<tr><td>note</td><td>注释</td></tr>
+</table>
+</section>
+
+<section>
+<h2>8. 返回</h2>
+<p><a href="../index.html">返回首页 / Back to home</a></p>
+</section>
+</main>
+</body></html>

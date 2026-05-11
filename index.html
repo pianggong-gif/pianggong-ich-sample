@@ -2,15 +2,16 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PG_TY_001_banzhy | Bilibili + EAF 标注展示</title>
+<title>平江方言非遗 Metadata 与示范库</title>
 <style>
 :root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#222;--muted:#666;--accent:#7b2d2d;--accent2:#305c5c;--line:#e5dacb;--hi:#fff0b8;--soft:#faf6ef}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Noto Sans JP",Arial,sans-serif;line-height:1.65}
-header{background:linear-gradient(135deg,#7b2d2d,#305c5c);color:white;padding:42px 20px;text-align:center}header h1{margin:0;font-size:clamp(1.7rem,4vw,2.7rem)}
-main{max-width:1280px;margin:auto;padding:22px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+header{background:linear-gradient(135deg,#7b2d2d,#305c5c);color:white;padding:54px 20px;text-align:center}header h1{margin:0;font-size:clamp(1.8rem,4vw,3rem)}
+main{max-width:1280px;margin:auto;padding:22px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0;box-shadow:0 8px 24px rgba(0,0,0,.05)}
 .layout{display:grid;grid-template-columns:minmax(320px,1fr) minmax(360px,1fr);gap:18px;align-items:start}@media(max-width:900px){.layout{grid-template-columns:1fr}}
 iframe,audio{width:100%;border-radius:14px;margin-top:8px}h2{color:var(--accent);margin-top:0;border-bottom:2px solid var(--line);padding-bottom:8px}
-.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}.meta div{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px}
+.meta,.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.meta div,.card{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:14px}
+.card a{display:inline-block;margin-top:8px;color:white;background:var(--accent2);padding:9px 14px;border-radius:10px;text-decoration:none}
 .line{border:1px solid var(--line);background:white;border-radius:14px;padding:13px;margin:10px 0;cursor:pointer;transition:.15s}.line:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(0,0,0,.07)}
 .line.active{background:var(--hi);border-color:#d29a00;box-shadow:0 0 0 2px rgba(210,154,0,.14)}.tier{display:grid;grid-template-columns:96px 1fr;gap:10px;margin:4px 0}
 .label{font-weight:700;color:var(--accent2)}.tx{font-size:1.15rem;font-weight:700}.ipa{font-family:"Charis SIL","Doulos SIL","Noto Sans",sans-serif}.small{color:var(--muted);font-size:.92rem}
@@ -22,13 +23,28 @@ footer{text-align:center;color:var(--muted);padding:36px}
 </head>
 <body>
 <header>
-<h1>平江方言童谣：Bilibili + EAF 标注展示</h1>
-<p>PG_TY_001_banzhy / 斑鸠</p>
-<p>平江思村芦洞方言 · Multilayer AI Corpus Demo</p>
+<h1>平江方言非遗 Metadata 与示范库</h1>
+<p>Pingjiang Dialect Intangible Heritage Metadata & Sample Corpus</p>
+<p>平江思村芦洞方言 · Bilibili + WAV + SRT + EAF + Multilayer Annotation</p>
 </header>
+
 <main>
 <section class="panel">
-<h2>Metadata</h2>
+<h2>入口 / Documents</h2>
+<div class="cards">
+  <div class="card"><h3>Metadata 规范</h3><p>字段、genre、language layer、ELAN tier、AI-ready 项目的正式规范。</p><a href="docs/metadata_schema.html">打开规范</a></div>
+  <div class="card"><h3>Metadata 实践指南</h3><p>给刚开始或已经在做方言/非遗数据收集的人看的实践说明。</p><a href="docs/metadata_practical_guide.html">打开指南</a></div>
+  <div class="card"><h3>童谣示范库</h3><p>PG_TY_001_banzhy：视频、音频、字幕、EAF标注、metadata联动展示。</p><a href="#sample">查看示范</a></div>
+</div>
+</section>
+
+<section class="panel">
+<h2>为什么要做 metadata？</h2>
+<p>metadata 是让音频、视频、字幕、EAF、文本、文献能够长期保存、检索、共享并被 AI 利用的基础设施。</p>
+</section>
+
+<section id="sample" class="panel">
+<h2>Sample Metadata</h2>
 <div class="meta">
 <div><b>标题</b><br>斑鸠</div><div><b>Genre</b><br>nursery_rhyme / 童谣</div><div><b>方言</b><br>平江思村芦洞方言</div><div><b>Speaker</b><br>Lfr, 1954</div>
 <div><b>采录日期</b><br>2018-08-20</div><div><b>采录地点</b><br>Lfr家</div><div><b>采集人</b><br>zsk</div><div><b>设备</b><br>Sony PJ760</div>
@@ -70,7 +86,8 @@ footer{text-align:center;color:var(--muted);padding:36px}
 <a href="PG_TY_001_banzhy_metadata.json">Metadata JSON</a><a href="README.md">README</a>
 </div>
 </section>
-</main><footer>Pingjiang Dialect Intangible Heritage Multilayer AI Corpus Demo</footer>
+</main>
+<footer>Pingjiang Dialect Intangible Heritage Multilayer AI Corpus Demo</footer>
 <script>
 let annotations=[];const audio=document.getElementById("audio"),lines=document.getElementById("lines");
 function fmt(t){const m=Math.floor(t/60);const s=(t%60).toFixed(3).padStart(6,"0");return `${m}:${s}`}
