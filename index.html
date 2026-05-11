@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PG_TY_001_banzhy | Bilibili + EAF 标注展示</title>
+<style>
+:root{--bg:#f5f1e8;--paper:#fffdf8;--ink:#222;--muted:#666;--accent:#7b2d2d;--accent2:#305c5c;--line:#e5dacb;--hi:#fff0b8;--soft:#faf6ef}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC","Noto Sans JP",Arial,sans-serif;line-height:1.65}
+header{background:linear-gradient(135deg,#7b2d2d,#305c5c);color:white;padding:42px 20px;text-align:center}header h1{margin:0;font-size:clamp(1.7rem,4vw,2.7rem)}
+main{max-width:1280px;margin:auto;padding:22px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;margin:18px 0;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+.layout{display:grid;grid-template-columns:minmax(320px,1fr) minmax(360px,1fr);gap:18px;align-items:start}@media(max-width:900px){.layout{grid-template-columns:1fr}}
+iframe,audio{width:100%;border-radius:14px;margin-top:8px}h2{color:var(--accent);margin-top:0;border-bottom:2px solid var(--line);padding-bottom:8px}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}.meta div{background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:12px}
+.line{border:1px solid var(--line);background:white;border-radius:14px;padding:13px;margin:10px 0;cursor:pointer;transition:.15s}.line:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(0,0,0,.07)}
+.line.active{background:var(--hi);border-color:#d29a00;box-shadow:0 0 0 2px rgba(210,154,0,.14)}.tier{display:grid;grid-template-columns:96px 1fr;gap:10px;margin:4px 0}
+.label{font-weight:700;color:var(--accent2)}.tx{font-size:1.15rem;font-weight:700}.ipa{font-family:"Charis SIL","Doulos SIL","Noto Sans",sans-serif}.small{color:var(--muted);font-size:.92rem}
+table{width:100%;border-collapse:collapse;margin-top:12px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}th{background:#f1e8dc}
+.downloads a{display:inline-block;margin:7px 9px 7px 0;padding:9px 14px;background:var(--accent2);color:#fff;text-decoration:none;border-radius:10px}
+.badge{display:inline-block;background:#eee2d2;color:#5b3828;padding:3px 8px;border-radius:999px;margin-right:6px;font-size:.9rem}
+footer{text-align:center;color:var(--muted);padding:36px}
+</style>
+</head>
+<body>
+<header>
+<h1>平江方言童谣：Bilibili + EAF 标注展示</h1>
+<p>PG_TY_001_banzhy / 斑鸠</p>
+<p>平江思村芦洞方言 · Multilayer AI Corpus Demo</p>
+</header>
+<main>
+<section class="panel">
+<h2>Metadata</h2>
+<div class="meta">
+<div><b>标题</b><br>斑鸠</div><div><b>Genre</b><br>nursery_rhyme / 童谣</div><div><b>方言</b><br>平江思村芦洞方言</div><div><b>Speaker</b><br>Lfr, 1954</div>
+<div><b>采录日期</b><br>2018-08-20</div><div><b>采录地点</b><br>Lfr家</div><div><b>采集人</b><br>zsk</div><div><b>设备</b><br>Sony PJ760</div>
+<div><b>视频</b><br><a href="https://www.bilibili.com/video/BV1s85t64Eqp/" target="_blank">Bilibili: BV1s85t64Eqp</a></div>
+</div>
+</section>
+
+<section class="layout">
+<div class="panel">
+<h2>Video / Audio</h2>
+<iframe height="420" src="https://player.bilibili.com/player.html?bvid=BV1s85t64Eqp&page=1&high_quality=1&autoplay=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<audio id="audio" controls preload="metadata"><source src="PG_TY_001_banzhy.wav" type="audio/wav"></audio>
+<p class="small">Bilibili 视频用于网页展示；音频播放器用于和右侧 EAF 标注同步高亮。点击右侧任一句，可跳转音频时间。</p>
+</div>
+<div class="panel">
+<h2>四层标注同步显示</h2>
+<div><span class="badge">TX</span><span class="badge">PGPY</span><span class="badge">PGMP</span><span class="badge">Translation</span></div>
+<div id="lines"></div>
+</div>
+</section>
+
+<section class="panel">
+<h2>SRT 字幕层</h2>
+<p class="small">从 <code>PG_TY_001_banzhy.srt</code> 读取并显示。</p>
+<div id="srtTable"></div>
+</section>
+
+<section class="panel">
+<h2>EAF 标注层</h2>
+<p class="small">从 <code>PG_TY_001_banzhy_demo.eaf</code> 提取 Tier，并按 Tier 展示。</p>
+<div id="eafTiers"></div>
+</section>
+
+<section class="panel">
+<h2>下载文件</h2>
+<div class="downloads">
+<a href="PG_TY_001_banzhy.txt">TXT</a><a href="PG_TY_001_banzhy.srt">SRT</a><a href="PG_TY_001_banzhy_demo.eaf">EAF</a><a href="PG_TY_001_banzhy.wav">WAV</a>
+<a href="annotations.json">Annotations JSON</a><a href="srt_subtitles.json">SRT JSON</a><a href="eaf_tiers.json">EAF JSON</a><a href="eaf_raw_annotations.json">Raw EAF JSON</a>
+<a href="PG_TY_001_banzhy_metadata.json">Metadata JSON</a><a href="README.md">README</a>
+</div>
+</section>
+</main><footer>Pingjiang Dialect Intangible Heritage Multilayer AI Corpus Demo</footer>
+<script>
+let annotations=[];const audio=document.getElementById("audio"),lines=document.getElementById("lines");
+function fmt(t){const m=Math.floor(t/60);const s=(t%60).toFixed(3).padStart(6,"0");return `${m}:${s}`}
+function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]))}
+function renderAnnotations(){
+  lines.innerHTML=annotations.map((x,i)=>`<div class="line" data-index="${i}">
+    <div class="small">${x.id}. ${fmt(x.start)} → ${fmt(x.end)}</div>
+    <div class="tier"><div class="label">TX</div><div class="tx">${esc(x.TX)}</div></div>
+    <div class="tier"><div class="label">PGPY</div><div>${esc(x.PGPY)}</div></div>
+    <div class="tier"><div class="label">PGMP</div><div class="ipa">${esc(x.PGMP)}</div></div>
+    <div class="tier"><div class="label">EN</div><div><i>${esc(x.GE_translation)}</i></div></div>
+  </div>`).join("");
+  document.querySelectorAll(".line").forEach(el=>el.addEventListener("click",()=>{const i=Number(el.dataset.index);audio.currentTime=annotations[i].start;audio.play();}));
+}
+function highlight(){const t=audio.currentTime;let active=-1;annotations.forEach((x,i)=>{if(t>=x.start&&t<=x.end)active=i});document.querySelectorAll(".line").forEach((el,i)=>el.classList.toggle("active",i===active));}
+function renderSrt(rows){document.getElementById("srtTable").innerHTML=`<table><tr><th>No.</th><th>Time</th><th>Subtitle</th></tr>${rows.map(r=>`<tr><td>${esc(r.id)}</td><td>${esc(r.time)}</td><td>${esc(r.text).replaceAll("\n","<br>")}</td></tr>`).join("")}</table>`}
+function renderEaf(tiers){let html="";Object.keys(tiers).forEach(tid=>{html+=`<h3>${esc(tid)}</h3><table><tr><th>Start</th><th>End</th><th>Text</th></tr>`;tiers[tid].forEach(x=>html+=`<tr><td>${fmt(x.start)}</td><td>${fmt(x.end)}</td><td>${esc(x.text)}</td></tr>`);html+="</table>"});document.getElementById("eafTiers").innerHTML=html;}
+fetch("annotations.json").then(r=>r.json()).then(data=>{annotations=data;renderAnnotations();audio.addEventListener("timeupdate",highlight);});
+fetch("srt_subtitles.json").then(r=>r.json()).then(renderSrt);
+fetch("eaf_tiers.json").then(r=>r.json()).then(renderEaf);
+</script>
+</body></html>

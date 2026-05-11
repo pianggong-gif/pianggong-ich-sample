@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "start": 0.27,
+    "end": 2.863,
+    "TX": "斑鸠凄苦，油煎豆腐。",
+    "PGPY": "ban1zhy1 ki4ku4，iêu2 zien1 tøu4fu4",
+    "PGMP": "pan33tʂy33 ki21ku21 iǝu13 tsien33 tøu21fu21",
+    "GE_translation": "The turtle dove is sorrowful, tofu is fried in oil."
+  },
+  {
+    "id": 2,
+    "start": 2.864,
+    "end": 5.115,
+    "TX": "豆腐好吃，不把嫂吃。",
+    "PGPY": "tøu4fu4 xao3kiaq bêq ba3 sao3 kiaq",
+    "PGMP": "tøu21fu21 xɑu35kiɑɂ4 pǝɂ4 pɑ35 sɑu35 kiɑɂ4",
+    "GE_translation": "The tofu is delicious; don't let sister-in-law eat it."
+  },
+  {
+    "id": 3,
+    "start": 5.353,
+    "end": 7.28,
+    "TX": "嫂嫂眼睛哩咕哩。",
+    "PGPY": "sao3sao3 ngan4ziang1 li1gu5li1",
+    "PGMP": "sɑu35 sɑu35 ŋan21tsiɑŋ33 li33ku55li33",
+    "GE_translation": "Sister-in-law's eyes roll around."
+  },
+  {
+    "id": 4,
+    "start": 7.28,
+    "end": 9.6,
+    "TX": "上岭捡苦珠。",
+    "PGPY": "shong4 liang4 gien3 ku3 zhy1",
+    "PGMP": "ʂoŋ21 liɑŋ21 kien35 ku35 tʂy33",
+    "GE_translation": "Climb the hill to pick bitter seeds."
+  },
+  {
+    "id": 5,
+    "start": 9.6,
+    "end": 11.921,
+    "TX": "苦珠打唛脑。",
+    "PGPY": "ku3 zhy1 da3 maq lao5",
+    "PGMP": "ku35 tʂy33 tɑ35 mɑɂ4 lɑu55",
+    "GE_translation": "The bitter seeds hit the head."
+  },
+  {
+    "id": 6,
+    "start": 11.921,
+    "end": 13.544,
+    "TX": "回去学大嫂。",
+    "PGPY": "uai2ki5 xoq tai6sao3",
+    "PGMP": "uai13ki55 xoɂ4 tai22sɑu35",
+    "GE_translation": "Go back and tell elder sister-in-law."
+  },
+  {
+    "id": 7,
+    "start": 13.582,
+    "end": 15.05,
+    "TX": "大嫂个筅把脑。",
+    "PGPY": "tai6sao3 go5 xien3ba1 lao5",
+    "PGMP": "tai22sɑu35 ko55 xien35pɑ33 lɑu55",
+    "GE_translation": "Elder sister-in-law's whisk handle."
+  },
+  {
+    "id": 8,
+    "start": 15.138,
+    "end": 16.467,
+    "TX": "哥哥个笔筒脑。",
+    "PGPY": "go1go1 go5 biqtêng2 lao5",
+    "PGMP": "ko33ko33 ko55 piɂ4tǝng13 lɑu55",
+    "GE_translation": "Elder brother's pen-holder top."
+  },
+  {
+    "id": 9,
+    "start": 16.631,
+    "end": 19.656,
+    "TX": "回去学婆婆，婆婆个吹风筒脑。",
+    "PGPY": "uai2ki5 xoq pø6pø5 pø6pø5 go5 chy1fêng1têng2 lao5",
+    "PGMP": "uai12ki55 xoɂ4 pø22pø55 pø22pø55 ko55 chy33fǝng33tǝng13 lɑu55",
+    "GE_translation": "Go back and tell grandmother about grandmother's wind tube."
+  }
+]

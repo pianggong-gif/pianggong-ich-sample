@@ -1,0 +1,31 @@
+{
+  "identifier": "PG_TY_001",
+  "title": "斑鸠",
+  "alternative_title": "banzhy",
+  "genre": "nursery_rhyme",
+  "dialect": {
+    "label_zh": "平江思村芦洞方言",
+    "label_en": "Pingjiang Sicun Ludong dialect"
+  },
+  "speaker": {
+    "name": "Lfr",
+    "birthyear": 1954,
+    "note": "思忖"
+  },
+  "recording_date": "2018-08-20",
+  "recording_place": "Lfr家",
+  "collector": "zsk",
+  "equipment": "Sony PJ760",
+  "video_url": "https://www.bilibili.com/video/BV1s85t64Eqp/",
+  "video_platform": "Bilibili",
+  "ai_ready": true,
+  "time_aligned": true,
+  "related_files": {
+    "audio": "PG_TY_001_banzhy.wav",
+    "eaf": "PG_TY_001_banzhy_demo.eaf",
+    "srt": "PG_TY_001_banzhy.srt",
+    "txt": "PG_TY_001_banzhy.txt",
+    "annotations": "annotations.json",
+    "eaf_tiers": "eaf_tiers.json"
+  }
+}

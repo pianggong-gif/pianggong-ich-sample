@@ -1,0 +1,82 @@
+{
+  "TX": [
+    {
+      "tier": "TX",
+      "start": 0.27,
+      "end": 2.863,
+      "text": "斑鸠凄苦，油煎豆腐。"
+    },
+    {
+      "tier": "TX",
+      "start": 2.864,
+      "end": 5.115,
+      "text": "豆腐好吃，不把嫂吃。"
+    },
+    {
+      "tier": "TX",
+      "start": 5.353,
+      "end": 7.28,
+      "text": "嫂嫂眼睛哩咕哩。"
+    }
+  ],
+  "PGPY": [
+    {
+      "tier": "PGPY",
+      "start": 0.27,
+      "end": 2.863,
+      "text": "ban1zhy1 ki4ku4，iêu2 zien1 tøu4fu4"
+    },
+    {
+      "tier": "PGPY",
+      "start": 2.864,
+      "end": 5.115,
+      "text": "tøu4fu4 xao3kiaq bêq ba3 sao3 kiaq"
+    },
+    {
+      "tier": "PGPY",
+      "start": 5.353,
+      "end": 7.28,
+      "text": "sao3sao3 ngan4ziang1 li1gu5li1"
+    }
+  ],
+  "PGMP": [
+    {
+      "tier": "PGMP",
+      "start": 0.27,
+      "end": 2.863,
+      "text": "pan33tʂy33 ki21ku21 iǝu13 tsien33 tøu21fu21"
+    },
+    {
+      "tier": "PGMP",
+      "start": 2.864,
+      "end": 5.115,
+      "text": "tøu21fu21 xɑu35kiɑɂ4 pǝɂ4 pɑ35 sɑu35 kiɑɂ4"
+    },
+    {
+      "tier": "PGMP",
+      "start": 5.353,
+      "end": 7.28,
+      "text": "sɑu35 sɑu35 ŋan21tsiɑŋ33 li33ku55li33"
+    }
+  ],
+  "GE_translation": [
+    {
+      "tier": "GE_translation",
+      "start": 0.27,
+      "end": 2.863,
+      "text": "The turtle dove is sorrowful, tofu is fried in oil."
+    },
+    {
+      "tier": "GE_translation",
+      "start": 2.864,
+      "end": 5.115,
+      "text": "The tofu is delicious, don't let sister-in-law eat it."
+    },
+    {
+      "tier": "GE_translation",
+      "start": 5.353,
+      "end": 7.28,
+      "text": "Sister-in-law's eyes roll around."
+    }
+  ]
+}
