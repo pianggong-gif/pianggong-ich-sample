@@ -2458,13 +2458,14 @@ let syncMaster = 'audio';
 let isMirroringSeek = false;
 let autoScrollEnabled = true;
 let lastAutoScrolledWord = '';
+let segmentStopAt = null;
 function esc(s){return String(s ?? '').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
 function fmt(t){const m=Math.floor(t/60);const s=(t%60).toFixed(3).padStart(6,'0');return `${m}:${s}`;}
 function allWords(){return annotations.flatMap(p=>p.words.map(w=>({...w, phraseId:p.id})));}
 const words = allWords();
 function render(){
   phrasesEl.innerHTML = annotations.map((p,pi)=>`<section class="phrase" data-p="${pi}">
-    <div class="phraseHead"><span>${p.id}. ${fmt(p.start)} - ${fmt(p.end)}</span><button class="playPhrase" type="button" data-start="${p.start}">Play phrase</button></div>
+    <div class="phraseHead"><span>${p.id}. ${fmt(p.start)} - ${fmt(p.end)}</span><button class="playPhrase" type="button" data-start="${p.start}" data-end="${p.end}">播放本句</button></div>
     <div class="tx">${esc(p.TX)}</div>
     <div class="translation"><i>${esc(p.FT_EN)}</i></div>
     <div class="small">${esc(p.FT_CH)} / ${esc(p.FT_JP)}</div>
@@ -2476,7 +2477,7 @@ function render(){
     </button>`).join('')}</div>
   </section>`).join('');
   document.querySelectorAll('.word').forEach(btn=>btn.addEventListener('click',()=>seekPlay(Number(btn.dataset.start))));
-  document.querySelectorAll('.playPhrase').forEach(btn=>btn.addEventListener('click',()=>seekPlay(Number(btn.dataset.start))));
+  document.querySelectorAll('.playPhrase').forEach(btn=>btn.addEventListener('click',()=>playSegment(Number(btn.dataset.start), Number(btn.dataset.end))));
 }
 function mediaReady(el){
   if(el.readyState >= 1) return Promise.resolve();
@@ -2495,7 +2496,13 @@ async function setMediaTime(time){
   audio.currentTime = t;
   return t;
 }
-async function seekPlay(time){
+async function playSegment(start, end){
+  segmentStopAt = Number.isFinite(end) ? end : null;
+  await seekPlay(start, true);
+}
+async function seekPlay(time, keepSegment=false){
+  if(!keepSegment) segmentStopAt = null;
+  if(segmentStopAt !== null && Number(time) > segmentStopAt) segmentStopAt = null;
   const t = await setMediaTime(time);
   if(mode === 'both'){
     syncMaster = 'audio';
@@ -2565,6 +2572,11 @@ function scrollActiveWordIntoView(wordId){
 }
 function updateHighlight(){
   const t = currentTime();
+  if(segmentStopAt !== null && t >= segmentStopAt){
+    video.pause();
+    audio.pause();
+    segmentStopAt = null;
+  }
   nowEl.textContent = fmt(t);
   const pIndex = annotations.findIndex(p=>t >= p.start && t <= p.end);
   const w = words.find(x=>t >= x.start && t <= x.end);
@@ -2625,6 +2637,9 @@ video.addEventListener('seeking', ()=>mirrorSeek(video, audio, 'video'));
 audio.addEventListener('seeking', ()=>mirrorSeek(audio, video, 'audio'));
 </script>
 </body></html>
+
+
+
 
 
 
