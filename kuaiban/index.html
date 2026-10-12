@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>平江城关话童谣快板标注资料</title>
+  <meta name="description" content="平江城关话童谣快板的ELAN标注、音视频、逐句翻译与逐词注释展示。">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="kicker">Pingjiang Chengguan Dialect Corpus</p>
+      <h1>平江城关话童谣快板标注资料</h1>
+      <p class="subtitle">视频・音频・ELAN 分层标注・中日英翻译・逐词 gloss</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="overview">
+      <div class="media-panel">
+        <video id="video" controls preload="metadata" playsinline poster="">
+          <source src="assets/pgty_lam_2026_kb.mp4" type="video/mp4">
+        </video>
+        <audio id="audio" controls preload="metadata">
+          <source src="assets/pgty_lam_2026_kb.wav" type="audio/wav">
+        </audio>
+        <div class="transport">
+          <button id="backBtn" type="button" title="上一句">‹</button>
+          <button id="playBtn" type="button" title="播放/暂停">▶</button>
+          <button id="nextBtn" type="button" title="下一句">›</button>
+          <button id="speedBtn" type="button" title="播放速度">1.0×</button>
+        </div>
+      </div>
+
+      <div class="meta-panel">
+        <p class="section-label">Metadata</p>
+        <h2 id="pageTitle">平江城关话童谣快板标注资料</h2>
+        <div id="metaGrid" class="meta-grid"></div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Display controls">
+      <label class="search">
+        <span>検索 / Search</span>
+        <input id="searchInput" type="search" placeholder="七子星 / 北斗 / cloud / 面の皮">
+      </label>
+      <div class="toggles">
+        <button class="toggle active" data-mode="ch" type="button">中文</button>
+        <button class="toggle active" data-mode="jp" type="button">日本語</button>
+        <button class="toggle active" data-mode="en" type="button">English</button>
+        <button class="toggle active" data-mode="words" type="button">Words</button>
+      </div>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <section class="content-layout">
+      <aside class="current-card">
+        <p class="section-label">Current Line</p>
+        <div id="currentLine" class="current-line"></div>
+      </aside>
+      <div id="phraseList" class="phrase-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Copyright © 2026 张盛开. 映像ファイル提供: 尹佳 / 表演: 李艾米.</p>
+    <p>Generated from ELAN annotation data. Source file: <span id="sourceEaf"></span></p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
