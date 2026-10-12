@@ -73,7 +73,6 @@ main {
   padding: 22px;
 }
 
-.overview,
 .content-layout {
   display: grid;
   grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
@@ -81,10 +80,14 @@ main {
   align-items: start;
 }
 
+.overview {
+  display: block;
+}
+
 .media-panel,
 .meta-panel,
 .toolbar,
-.current-card,
+.study-sidebar,
 .phrase {
   background: var(--paper);
   border: 1px solid var(--line);
@@ -93,9 +96,8 @@ main {
 }
 
 .media-panel {
-  position: sticky;
-  top: 14px;
   padding: 12px;
+  border-bottom: 1px solid var(--line);
 }
 
 video,
@@ -217,9 +219,14 @@ button {
   white-space: nowrap;
 }
 
-.current-card {
+.study-sidebar {
   position: sticky;
   top: 14px;
+  max-height: calc(100vh - 28px);
+  overflow: auto;
+}
+
+.current-card {
   padding: 16px;
 }
 
@@ -335,6 +342,12 @@ button {
   display: block;
 }
 
+@media (min-width: 881px) {
+  .segment-playing .mini-player {
+    display: none;
+  }
+}
+
 .mini-head {
   display: grid;
   grid-template-columns: 1fr 34px;
@@ -384,9 +397,10 @@ footer {
     grid-template-columns: 1fr;
   }
 
-  .media-panel,
-  .current-card {
+  .study-sidebar {
     position: static;
+    max-height: none;
+    overflow: visible;
   }
 
   .stats {
