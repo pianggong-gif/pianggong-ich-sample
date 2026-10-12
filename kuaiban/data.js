@@ -1,6 +1,6 @@
 window.KUAIBAN_DATA = {
-  "title": "平江城关话童谣快板标注资料",
-  "subtitle": "Pingjiang Chengguan Dialect Nursery-Rhyme Kuaiban Annotated Corpus",
+  "title": "跟我话平江话 gen ngo ua Pianggong fa",
+  "subtitle": "A nursery-rhyme learning page for children",
   "sourceEaf": "pgty_lam_2026_kb_zsk.eaf",
   "updated": "2026-10-12",
   "metadata": {
