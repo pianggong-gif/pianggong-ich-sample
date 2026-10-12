@@ -317,6 +317,54 @@ button {
   display: none;
 }
 
+.mini-player {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 20;
+  display: none;
+  width: min(360px, calc(100vw - 32px));
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .42);
+  border-radius: 8px;
+  background: #101316;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .28);
+}
+
+.segment-playing .mini-player {
+  display: block;
+}
+
+.mini-head {
+  display: grid;
+  grid-template-columns: 1fr 34px;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  color: white;
+  background: rgba(16, 19, 22, .92);
+  font-size: .88rem;
+}
+
+.mini-head span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mini-head button {
+  min-height: 28px;
+  border-color: rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .1);
+  color: white;
+  font-weight: 800;
+}
+
+.mini-player video {
+  width: 100%;
+  border-radius: 0;
+}
+
 footer {
   max-width: 1180px;
   margin: 0 auto;
@@ -343,5 +391,11 @@ footer {
 
   .stats {
     white-space: normal;
+  }
+
+  .mini-player {
+    right: 10px;
+    bottom: 10px;
+    width: min(300px, calc(100vw - 20px));
   }
 }

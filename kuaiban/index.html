@@ -63,6 +63,16 @@
     </section>
   </main>
 
+  <div id="miniPlayer" class="mini-player" aria-live="polite">
+    <div class="mini-head">
+      <span id="miniCaption">Current clip</span>
+      <button id="miniClose" type="button" title="閉じる">×</button>
+    </div>
+    <video id="miniVideo" muted playsinline preload="metadata">
+      <source src="assets/pgty_lam_2026_kb.mp4" type="video/mp4">
+    </video>
+  </div>
+
   <footer>
     <p>Copyright © 2026 张盛开. 映像ファイル提供: 尹佳 / 表演: 李艾米.</p>
     <p>Generated from ELAN annotation data. Source file: <span id="sourceEaf"></span></p>

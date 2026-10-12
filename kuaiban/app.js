@@ -13,6 +13,9 @@
   const stats = document.getElementById("stats");
   const sourceEaf = document.getElementById("sourceEaf");
   const pageTitle = document.getElementById("pageTitle");
+  const miniVideo = document.getElementById("miniVideo");
+  const miniCaption = document.getElementById("miniCaption");
+  const miniClose = document.getElementById("miniClose");
   const modes = { ch: true, jp: true, en: true, words: true };
   const speeds = [0.75, 1, 1.25, 1.5];
   let speedIndex = 1;
@@ -28,6 +31,31 @@
   }[char]));
 
   const sec = (ms) => Math.max(0, (ms || 0) / 1000);
+
+  function showMiniPlayer(caption, start) {
+    miniCaption.textContent = caption;
+    miniVideo.playbackRate = video.playbackRate;
+    miniVideo.currentTime = start;
+    document.body.classList.add("segment-playing");
+    miniVideo.play().catch(() => {});
+  }
+
+  function hideMiniPlayer() {
+    document.body.classList.remove("segment-playing");
+    miniVideo.pause();
+  }
+
+  function syncMiniPlayer() {
+    if (!document.body.classList.contains("segment-playing")) return;
+    if (Math.abs(miniVideo.currentTime - video.currentTime) > 0.18) {
+      miniVideo.currentTime = video.currentTime;
+    }
+    if (video.paused) {
+      miniVideo.pause();
+    } else if (miniVideo.paused) {
+      miniVideo.play().catch(() => {});
+    }
+  }
 
   function renderMeta() {
     pageTitle.textContent = data.title;
@@ -84,8 +112,13 @@
     });
     phraseList.querySelectorAll(".word").forEach((word) => {
       word.addEventListener("click", () => {
-        video.currentTime = Number(word.dataset.start);
+        const phraseNode = word.closest(".phrase");
+        const phraseIndex = Number(phraseNode.dataset.index);
+        const start = Number(word.dataset.start);
+        setActive(phraseIndex, false);
+        video.currentTime = start;
         stopAt = Number(word.dataset.end);
+        showMiniPlayer(`${data.phrases[phraseIndex].tx} · ${word.querySelector(".han").textContent}`, start);
         video.play();
       });
     });
@@ -115,8 +148,10 @@
 
   function playPhrase(index) {
     setActive(index, true);
-    video.currentTime = sec(data.phrases[activeIndex].start);
+    const start = sec(data.phrases[activeIndex].start);
+    video.currentTime = start;
     stopAt = sec(data.phrases[activeIndex].end);
+    showMiniPlayer(data.phrases[activeIndex].tx, start);
     video.play();
   }
 
@@ -125,11 +160,13 @@
       video.pause();
       video.currentTime = stopAt;
       stopAt = null;
+      hideMiniPlayer();
       return;
     }
     const ms = video.currentTime * 1000;
     const idx = data.phrases.findIndex((phrase) => ms >= phrase.start && ms < phrase.end);
     if (idx >= 0 && idx !== activeIndex) setActive(idx, false);
+    syncMiniPlayer();
   }
 
   function applyModes() {
@@ -170,6 +207,7 @@
     } else {
       video.pause();
       stopAt = null;
+      hideMiniPlayer();
     }
   });
 
@@ -179,6 +217,7 @@
     speedIndex = (speedIndex + 1) % speeds.length;
     video.playbackRate = speeds[speedIndex];
     audio.playbackRate = speeds[speedIndex];
+    miniVideo.playbackRate = speeds[speedIndex];
     speedBtn.textContent = `${speeds[speedIndex].toFixed(2).replace(".00", "")}×`;
   });
 
@@ -187,8 +226,11 @@
   });
   video.addEventListener("pause", () => {
     playBtn.textContent = "▶";
+    miniVideo.pause();
   });
   video.addEventListener("timeupdate", updateFromTime);
+  video.addEventListener("seeked", syncMiniPlayer);
+  miniClose.addEventListener("click", hideMiniPlayer);
   searchInput.addEventListener("input", applySearch);
 
   renderMeta();
